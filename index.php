@@ -122,7 +122,7 @@ try {
         <hr>
 
         <section class="resource-embeds-section">
-            <h2>Recursos Relacionados:</h2>
+            <h2>Cosas Random que agrege:</h2>
             <div class="embed-grid">
                 <div class="embed-item">
                     <h3>Tutorial de PHP Básico</h3>
