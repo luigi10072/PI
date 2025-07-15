@@ -132,7 +132,7 @@ try {
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                 allowfullscreen></iframe>
                     </div>
-                    <p>Un video introductorio a la programación con PHP. (Este es un ejemplo de Rick Astley para probar el embed).</p>
+                    <p>Un video de musica.</p>
                 </div>
 
                 <div class="embed-item">
