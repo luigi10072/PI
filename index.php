@@ -132,7 +132,7 @@ try {
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                 allowfullscreen></iframe>
                     </div>
-                    <p>Un video de musica sencillo con uso de embed.</p>
+                    <p>Un video de musica sencillo con uso de embed. (En su es un video de las letras de la canción)</p>
                 </div>
 
                 <div class="embed-item">
