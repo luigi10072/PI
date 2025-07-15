@@ -4,11 +4,11 @@
 session_start();
 
 // Las variables de entorno para MySQL de Railway serán así:
-$dbHost = getenv('MYSQLHOST');
-$dbPort = getenv('MYSQLPORT');
-$dbName = getenv('MYSQLDATABASE');
-$dbUser = getenv('MYSQLUSER');
-$dbPass = getenv('MYSQLPASSWORD');
+$dbHost = getenv('MYSQLHOST') ?: 'mysql.railway.internal';
+$dbPort = getenv('MYSQLPORT') ?: '3306';
+$dbName = getenv('MYSQLDATABASE') ?: 'railway';
+$dbUser = getenv('MYSQLUSER') ?: 'root';
+$dbPass = getenv('MYSQLPASSWORD') ?: 'YmsYTPoFieNyqKAoOwHtFTTrPBWoiyMw';
 
 $pdo = null;
 $db_status_message = "";
