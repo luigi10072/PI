@@ -1,16 +1,14 @@
 <?php
-// 2index.php
+// index.php
 
 session_start();
 
-// --- Configuración de la base de datos ---
-// Railway inyectará estas variables automáticamente en tu despliegue.
-
-$dbHost = getenv('PGHOST');
-$dbPort = getenv('PGPORT');
-$dbName = getenv('PGDATABASE');
-$dbUser = getenv('PGUSER');
-$dbPass = getenv('PGPASSWORD');
+// Las variables de entorno para MySQL de Railway serán así:
+$dbHost = getenv('MYSQLHOST');
+$dbPort = getenv('MYSQLPORT');
+$dbName = getenv('MYSQLDATABASE');
+$dbUser = getenv('MYSQLUSER');
+$dbPass = getenv('MYSQLPASSWORD');
 
 $pdo = null;
 $db_status_message = "";
@@ -21,9 +19,10 @@ $success_message = "";
 try {
     // Solo intentamos conectar si todas las variables necesarias están presentes
     if ($dbHost && $dbPort && $dbName && $dbUser && $dbPass) {
-        $pdo = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPass);
+        // *** CAMBIO CLAVE AQUÍ: Usar 'mysql' en la cadena DSN y el puerto adecuado ***
+        $pdo = new PDO("mysql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPass);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $db_status_message = "Conexión a la base de datos exitosa.";
+        $db_status_message = "Conexión a la base de datos MySQL exitosa.";
 
         // --- Manejo de Añadir Nota (simplificado) ---
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['note_title']) && isset($_POST['note_content'])) {
@@ -34,7 +33,6 @@ try {
                 $stmt = $pdo->prepare("INSERT INTO notes (title, content) VALUES (:title, :content)");
                 if ($stmt->execute([':title' => $title, ':content' => $content])) {
                     $success_message = "Nota añadida correctamente.";
-                    // Redirigir para evitar reenvío de formulario al recargar
                     header("Location: " . $_SERVER['PHP_SELF']);
                     exit();
                 } else {
@@ -46,15 +44,16 @@ try {
         }
 
         // --- Obtener Notas Existentes ---
+        // La sintaxis de SELECT y ORDER BY es compatible entre PostgreSQL y MySQL para esto.
         $stmt = $pdo->query("SELECT id, title, content, created_at FROM notes ORDER BY created_at DESC");
         $notes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     } else {
-        $db_status_message = "Faltan variables de entorno para la base de datos.";
+        $db_status_message = "Faltan variables de entorno para la base de datos MySQL.";
         $error_message = "No se pudo conectar a la base de datos. (¿Estás en Railway o configuraste las variables localmente?)";
     }
 } catch (PDOException $e) {
-    $db_status_message = "Error de conexión a la base de datos.";
+    $db_status_message = "Error de conexión a la base de datos MySQL.";
     $error_message = "Error en la base de datos: " . $e->getMessage();
 }
 ?>
