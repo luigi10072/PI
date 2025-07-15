@@ -1,0 +1,295 @@
+/* css/style.css */
+
+/* --- Base y Tipografía --- */
+body {
+    font-family: 'Roboto', sans-serif; /* Fuente más moderna */
+    margin: 0;
+    padding: 0;
+    background-color: #f7f9fc; /* Fondo suave */
+    color: #34495e; /* Texto principal */
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #2c3e50; /* Azul oscuro */
+    color: #fff;
+    padding: 1.5rem 0;
+    text-align: center;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+}
+
+header h1 {
+    margin-bottom: 0.5rem;
+}
+
+main {
+    flex: 1; /* Para que ocupe el espacio restante y el footer quede abajo */
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 25px;
+    background-color: #ffffff;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    border-radius: 12px;
+}
+
+h1{
+    color: #ffffff;
+    margin-top: 0;
+    margin-bottom: 1rem
+}
+
+h2, h3, h4 {
+    color: #2c3e50;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0));
+    margin: 40px 0;
+}
+
+/* --- Mensajes de Estado --- */
+.message {
+    padding: 12px 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: center;
+    border: 1px solid transparent;
+}
+
+.message.success-message {
+    background-color: #e6ffee;
+    color: #28a745;
+    border-color: #28a745;
+}
+
+.message.error-message {
+    background-color: #ffe6e6;
+    color: #dc3545;
+    border-color: #dc3545;
+}
+
+/* --- Formulario de Notas --- */
+.note-form .form-group {
+    margin-bottom: 15px;
+}
+
+.note-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+
+.note-form input[type="text"],
+.note-form textarea {
+    width: calc(100% - 22px); /* Padding y borde */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    box-sizing: border-box; /* Incluir padding en el ancho */
+    transition: border-color 0.3s ease;
+}
+
+.note-form input[type="text"]:focus,
+.note-form textarea:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+.note-form textarea {
+    resize: vertical; /* Permite redimensionar verticalmente */
+}
+
+/* --- Botones --- */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none;
+}
+
+.btn.primary-btn {
+    background-color: #3498db; /* Azul */
+    color: #fff;
+}
+
+.btn.primary-btn:hover {
+    background-color: #2980b9; /* Azul más oscuro al pasar el ratón */
+    transform: translateY(-2px);
+}
+
+/* --- Lista de Notas --- */
+.notes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 25px;
+}
+
+.note-card {
+    background-color: #fdfdfd;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.note-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.note-card h3 {
+    color: #27ae60; /* Verde */
+    margin-bottom: 10px;
+}
+
+.note-card p {
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.note-card small {
+    color: #999;
+    font-size: 0.85rem;
+}
+
+/* --- Sección de Embeds y Enlaces Externos (Mismos estilos que antes, pero revisados) --- */
+.resource-embeds-section, .external-services-section {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.embed-grid, .links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 10px;
+}
+
+.embed-item {
+    background-color: #fdfdfd;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 5px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.responsive-embed {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* Mantener 16:9, pero ajusta el contenedor principal para que ocupe más espacio si es necesario */
+
+
+    /* Dejemos 16:9, pero podemos controlar el ancho máximo para que se vean más grandes en pantallas amplias */
+    height: 0;
+    overflow: hidden;
+    background: #000;
+    border-radius: 8px;
+    margin-bottom: 15px;
+
+    max-width: 800px; /* O el valor que prefieras, ej. 900px, 100% si quieres que ocupe todo el main */
+    margin-left: auto;
+    margin-right: auto; /* Centra el embed si tiene un max-width */
+}
+
+.responsive-embed iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.cloud-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #3498db;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.cloud-link:hover {
+    background-color: #e9f7ff;
+    border-color: #3498db;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.cloud-link img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+    object-fit: contain;
+}
+
+.cloud-link span {
+    font-weight: bold;
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 25px;
+    margin-top: 50px;
+    background-color: #2c3e50;
+    color: #fff;
+    box-shadow: 0 -3px 6px rgba(0,0,0,0.15);
+}
+
+/* --- Media Queries para Responsividad --- */
+@media (max-width: 768px) {
+    main {
+        margin: 20px;
+        padding: 20px;
+    }
+    .notes-grid, .embed-grid, .links-grid {
+        grid-template-columns: 1fr; /* Una columna en pantallas más pequeñas */
+    }
+    .responsive-embed {
+        padding-bottom: 65%; /* Ajuste para que se vea mejor en móviles, puedes experimentar */
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+    h2 {
+        font-size: 1.5rem;
+    }
+    .btn {
+        width: 100%; /* Botones ocupan todo el ancho en móviles */
+        box-sizing: border-box;
+    }
+    .note-card, .embed-item, .cloud-link {
+        padding: 15px;
+    }
+}
