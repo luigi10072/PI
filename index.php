@@ -122,8 +122,7 @@ try {
         <hr>
 
         <section class="resource-embeds-section">
-            <h2>Recursos Relacionados (Embeds):</h2>
-            <p>Aquí puedes integrar videos o mapas relevantes para tus notas o para tu proyecto.</p>
+            <h2>Recursos Relacionados:</h2>
             <div class="embed-grid">
                 <div class="embed-item">
                     <h3>Tutorial de PHP Básico</h3>
